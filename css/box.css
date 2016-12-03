@@ -1,0 +1,22 @@
+.status {
+    padding-left: 4px;
+    padding-right: 4px;
+}
+.blue {
+    background-color: blue;
+}
+.yellow {
+    background-color: yellow;
+}
+.red {
+    background-color: red;
+}
+.box {
+    border: 1px solid gray;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+.box > a {
+    margin-left: 10px;
+    margin-bottom: 3px;
+}
