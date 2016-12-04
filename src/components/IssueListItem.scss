@@ -1,35 +1,28 @@
-:local .status {
-    padding-top: 7px;
-    padding-bottom: 7px;
-    padding-left: 6px;
-    padding-right: 6px;
-    border-top-left-radius: 6px;
-    border-bottom-left-radius: 6px;
-}
-
-:local .blue {
-    background-color: blue;
-}
-
-:local .yellow {
-    background-color: yellow;
-}
-
-:local .red {
-    background-color: red;
-}
-
 :local .box {
     border-radius: 5px;
     border-top-left-radius: 6px;
     border-bottom-left-radius: 6px;
     border: 1px solid gray;
+    border-left-width: 10px;
     margin-right: 10px;
     margin-left: 10px;
     margin-bottom: 5px;
     padding-top: 5px;
     padding-bottom: 5px;
 }
+
+:local .open {
+    border-left-color: #4CAF50;
+}
+
+:local .inProgress {
+    border-left-color: #FF9800;
+}
+
+:local .closed {
+    border-left-color: #F44336;
+}
+
 
 :local .box > a {
     margin-left: 10px;
