@@ -1,1 +1,1 @@
-web: serve -p $PORT build
+web: node server/index.js
