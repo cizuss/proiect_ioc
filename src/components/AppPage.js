@@ -4,10 +4,16 @@ import { connect } from 'react-redux'
 import LoginPage from './LoginPage'
 import NavBarPage from './NavBarPage'
 
+import { restoreLoginData } from '../actions/LoginActions'
+
 @connect(state => ({
   loginState: state.user.loginState
 }))
 export default class AppPage extends Component {
+  componentWillMount () {
+    this.props.dispatch(restoreLoginData())
+  }
+
   render () {
     const { loginState } = this.props
 
