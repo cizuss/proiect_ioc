@@ -17,7 +17,6 @@ export default class IssueListItem extends Component {
 
   render () {
     const { issue } = this.props
-    console.log(issue)
     // return <div>{JSON.stringify(issue)}</div>
     return <div className={styles.box}>
       <span className={styles.status + ' ' + this.getLabelColor(issue.status)} />

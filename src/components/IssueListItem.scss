@@ -1,6 +1,10 @@
 :local .status {
-    padding-left: 4px;
-    padding-right: 4px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    padding-left: 6px;
+    padding-right: 6px;
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
 }
 
 :local .blue {
@@ -17,10 +21,14 @@
 
 :local .box {
     border-radius: 5px;
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
     border: 1px solid gray;
     margin-right: 10px;
     margin-left: 10px;
     margin-bottom: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 
 :local .box > a {
