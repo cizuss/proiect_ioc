@@ -4,21 +4,26 @@ import { Nav, NavItem, Col } from 'react-bootstrap'
 
 import sideBarStyles from './SideBarPage.scss'
 
+const FakeNavItem = props =>
+  <div className={props.className}>
+    {props.children}
+  </div>
+
 export default class SideBarPage extends Component {
 
-  handleAsigneeFilter = () => {
-
+  handleNotImplemented = () => {
+    window.alert('Not implemented. Sorry. This is just a prototype')
   }
 
   render () {
-    return <Col xs={1} md={1} fluid className={sideBarStyles.sideBarBox}>
+    return <Col xs={12} md={2} lg={1} className={sideBarStyles.sideBarBox}>
       <Nav bsStyle='pills' stacked>
         <NavItem>Create Issue</NavItem>
-        <div className={sideBarStyles.filterByBox}>
-          Filter by
-        </div>
-        <NavItem onClick={this.handleAsigneeFilter}>Asignee</NavItem>
-        <NavItem>Sprint</NavItem>
+        <FakeNavItem className={sideBarStyles.filterByBox}>
+          Filter by:
+        </FakeNavItem>
+        <NavItem onClick={this.handleNotImplemented}>Asignee</NavItem>
+        <NavItem onClick={this.handleNotImplemented}>Sprint</NavItem>
       </Nav>
     </Col>
   }

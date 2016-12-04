@@ -1,8 +1,16 @@
-const mockData = {
-  '0': { id: 0, name: 'Project 1' },
-  '1': { id: 1, name: 'Project 2' }
-}
+import { handleActions } from 'redux-actions'
 
-export default function projects (state = mockData, action) {
-  return state
-}
+import { PROJECTS_RESPONSE, LOGIN_RESPONSE } from '../constants/ActionTypes'
+
+export default handleActions({
+  [LOGIN_RESPONSE]: state => {},
+  [PROJECTS_RESPONSE]: {
+    next: (state, { payload }) => {
+      const newState = { ...state }
+      payload.forEach(project => {
+        newState[project.id] = project
+      })
+      return newState
+    }
+  }
+}, {})

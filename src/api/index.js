@@ -1,4 +1,4 @@
-const apiURL = 'http://jsonplaceholder.typicode.com'
+const apiURL = 'https://snagbe.herokuapp.com/api/v1/'
 
 export async function apiCall (getState, method, path, data, opts) {
   opts = opts || {}
@@ -46,81 +46,19 @@ function delay (duration) {
 }
 
 export async function apiLogin (username, password) {
-  // return await apiCall(null, 'POST', '/login', { username, password })
-  await delay(1000) // Fake network call
-
-  if (username !== 'john') {
-    throw new Error('Only john can login')
-  }
-
-  return {
-    token: 'thisistotallyavalidtoken',
-    user: {
-      id: 1,
-      name: 'John Doe',
-      username,
-      role: 2
-    }
-  }
+  return await apiCall(null, 'POST', '/login', { username, password })
 }
 
-const mockIssues = [{
-  id: 0,
-  issueCode: 1,
-  name: 'First issue',
-  project: 0,
-  priority: 0,
-  storyPoints: 5,
-  sprint: 1,
-  label: 'Some Label',
-  description: 'Very smart description indeed',
-  status: 'open',
-  environment: 'Some Environment',
-  asignee: null,
-  reporter: null,
-  creationDate: (Date.now() / 1000) - 60 * 60 * 24
-}, {
-  id: 1,
-  issueCode: 2,
-  name: 'Second issue',
-  project: 0,
-  priority: 0,
-  storyPoints: 3,
-  sprint: 1,
-  label: 'Some Label',
-  description: 'Even smarter description',
-  status: 'inProgress',
-  environment: 'Some Environment',
-  asignee: null,
-  reporter: null,
-  creationDate: (Date.now() / 1000) - 60 * 60 * 48
-}, {
-  id: 2,
-  issueCode: 1,
-  name: 'First issue on second project',
-  project: 1,
-  priority: 0,
-  storyPoints: 4,
-  sprint: 1,
-  label: 'Some Label',
-  description: 'Very smart but different description',
-  status: 'closed',
-  environment: 'Some Environment',
-  asignee: null,
-  reporter: null,
-  creationDate: (Date.now() / 1000) - 60 * 60 * 72
-}]
-
 export async function apiGetDashboardIssues (getState) {
-  // return await apiCall(getState, 'GET', '/dashboard_issues', { username, password })
-  await delay(1000) // Fake network call
-  return mockIssues
+  return await apiCall(getState, 'GET', '/dashboard_issues')
+}
+
+export async function apiGetProjects (getState) {
+  return await apiCall(getState, 'GET', '/projects')
 }
 
 export async function apiGetProjectIssues (getState, projectId) {
-  // return await apiCall(getState, 'GET', `/projects/${projectId}/issues`, { username, password })
-  await delay(1000) // Fake network call
-  return mockIssues.filter(issue => issue.project === projectId)
+  return await apiCall(getState, 'GET', `/projects/${projectId}/issues`)
 }
 
 export async function apiGetIssue (getState, issueId) {

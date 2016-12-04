@@ -10,14 +10,23 @@ export default function issues (state = {}, action) {
     case LOGIN_RESPONSE:
       return {}
 
-    case DASHBOARD_ISSUES_RESPONSE:
-    case PROJECT_ISSUES_RESPONSE:
+    case PROJECT_ISSUES_RESPONSE: {
+      if (action.error) { return state }
+      const newState = { ...state }
+      action.payload.issues.forEach(issue => {
+        newState[issue.id] = issue
+      })
+      return newState
+    }
+
+    case DASHBOARD_ISSUES_RESPONSE: {
       if (action.error) { return state }
       const newState = { ...state }
       action.payload.forEach(issue => {
         newState[issue.id] = issue
       })
       return newState
+    }
 
     case ISSUE_RESPONSE:
       return { ...state, [action.payload.id]: action.payload }

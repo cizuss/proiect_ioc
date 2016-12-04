@@ -19,6 +19,7 @@ export const getProjectIssues = (projectId) => {
   return (dispatch, getState) => {
     dispatch(createAction(PROJECT_ISSUES_REQUEST)())
     const promiseForCall = apiGetProjectIssues(getState, projectId)
+      .then(issues => ({ projectId, issues }))
     dispatch(createAction(PROJECT_ISSUES_RESPONSE)(promiseForCall))
   }
 }
