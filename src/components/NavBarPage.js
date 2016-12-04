@@ -1,12 +1,27 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router'
+import { Grid, Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap'
 
 export default class NavBarPage extends Component {
   render () {
     return <div>
-      <div>
-        <div><Link to='/'>Home</Link></div>
-      </div>
+      <Navbar fluid fixedTop>
+        <Navbar.Header>
+          <Navbar.Brand>
+            <a href='#'>SNAG</a>
+          </Navbar.Brand>
+        </Navbar.Header>
+        <Nav>
+          <NavItem eventKey={1} href='#'>Link</NavItem>
+          <NavItem eventKey={2} href='#'>Link</NavItem>
+          <NavDropdown eventKey={3} title='Dropdown' id='basic-nav-dropdown'>
+            <MenuItem eventKey={3.1}>Action</MenuItem>
+            <MenuItem eventKey={3.2}>Another action</MenuItem>
+            <MenuItem eventKey={3.3}>Something else here</MenuItem>
+            <MenuItem divider />
+            <MenuItem eventKey={3.3}>Separated link</MenuItem>
+          </NavDropdown>
+        </Nav>
+      </Navbar>
       {this.props.children}
     </div>
   }
