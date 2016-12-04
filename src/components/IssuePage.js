@@ -15,6 +15,13 @@ export default class IssuePage extends Component {
     this.props.dispatch(getIssue(this.props.params.issueId))
   }
 
+  componentWillReceiveProps (newProps) {
+    const newIssueId = newProps.params.issueId
+    if (newIssueId !== this.props.params.issueId) {
+      this.props.dispatch(getIssue(newIssueId))
+    }
+  }
+
   state = {
     editing: false
   }
@@ -44,16 +51,18 @@ export default class IssuePage extends Component {
   }
 
   render () {
-    const { issue: propsIssue } = this.props
+    const { issue: propsIssue, userId } = this.props
     const { issue: stateIssue, editing } = this.state
     const issue = editing ? stateIssue : propsIssue
     if (!issue) { return <div /> }
+
+    const assignedToMe = issue.assignee_id === userId
 
     return (
       <div className={styles.container}>
         <ButtonGroup>
           <Button onClick={this.handleEdit}>Edit</Button>
-          <Button onClick={this.handleAssignToMe} disabled={editing}>Assign to me</Button>
+          <Button onClick={this.handleAssignToMe} disabled={editing || assignedToMe}>Assign to me</Button>
           <Button onClick={this.handleStartIssue} disabled={editing}>Start issue</Button>
         </ButtonGroup>
         <Issue editing={editing} issue={issue} />

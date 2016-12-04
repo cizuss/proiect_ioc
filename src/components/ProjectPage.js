@@ -14,6 +14,13 @@ export default class ProjectPage extends Component {
     this.props.dispatch(getProjectIssues(this.props.params.projectId))
   }
 
+  componentWillReceiveProps (newProps) {
+    const newProjectId = newProps.params.projectId
+    if (newProjectId !== this.props.params.projectId) {
+      this.props.dispatch(getProjectIssues(newProjectId))
+    }
+  }
+
   render () {
     const { issueIds } = this.props
 
