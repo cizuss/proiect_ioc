@@ -2,7 +2,8 @@ import {
   DASHBOARD_ISSUES_RESPONSE,
   PROJECT_ISSUES_RESPONSE,
   ISSUE_RESPONSE,
-  LOGIN_RESPONSE
+  LOGIN_RESPONSE,
+  UPDATE_ISSUE_RESPONSE
 } from '../constants/ActionTypes'
 
 export default function issues (state = {}, action) {
@@ -29,6 +30,7 @@ export default function issues (state = {}, action) {
     }
 
     case ISSUE_RESPONSE:
+    case UPDATE_ISSUE_RESPONSE:
       return { ...state, [action.payload.id]: action.payload }
   }
   return state

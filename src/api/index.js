@@ -1,4 +1,4 @@
-const apiURL = 'https://snagbe.herokuapp.com/api/v1/'
+const apiURL = 'https://snagbe.herokuapp.com/api/v1'
 
 export async function apiCall (getState, method, path, data, opts) {
   opts = opts || {}
@@ -37,14 +37,6 @@ export async function apiCall (getState, method, path, data, opts) {
   return await response.json()
 }
 
-function delay (duration) {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      resolve()
-    }, duration)
-  })
-}
-
 export async function apiLogin (username, password) {
   return await apiCall(null, 'POST', '/login', { username, password })
 }
@@ -62,7 +54,9 @@ export async function apiGetProjectIssues (getState, projectId) {
 }
 
 export async function apiGetIssue (getState, issueId) {
-  // return await apiCall(getState, 'GET', `/issue/${issueId}`, { username, password })
-  await delay(1000) // Fake network call
-  return mockIssues.find(issue => issue.id === issueId)
+  return await apiCall(getState, 'GET', `/issues/${issueId}`)
+}
+
+export async function apiUpdateIssue (getState, issueId, diff) {
+  return await apiCall(getState, 'PATCH', `/issues/${issueId}`, diff)
 }
