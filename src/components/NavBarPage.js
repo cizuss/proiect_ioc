@@ -4,6 +4,8 @@ import { LinkContainer } from 'react-router-bootstrap'
 
 import styles from './NavBarPage.scss'
 
+const projects = ['Project 1', 'Project 2']
+
 export default class NavBarPage extends Component {
   render () {
     return <div>
@@ -15,15 +17,14 @@ export default class NavBarPage extends Component {
         </Navbar.Header>
         <Nav>
           <LinkContainer to='/'>
-            <NavItem eventKey={1}>Link</NavItem>
+            <NavItem>Dashboard</NavItem>
           </LinkContainer>
-          <NavItem eventKey={2} href='#'>Link</NavItem>
-          <NavDropdown eventKey={3} title='Dropdown' id='basic-nav-dropdown'>
-            <MenuItem eventKey={3.1}>Action</MenuItem>
-            <MenuItem eventKey={3.2}>Another action</MenuItem>
-            <MenuItem eventKey={3.3}>Something else here</MenuItem>
-            <MenuItem divider />
-            <MenuItem eventKey={3.3}>Separated link</MenuItem>
+          <NavDropdown title='Dropdown' id='basic-nav-dropdown'>
+            {projects.map((project, idx) =>
+              <LinkContainer to='/'>
+                <MenuItem key={idx}>{project}</MenuItem>
+              </LinkContainer>
+            )}
           </NavDropdown>
         </Nav>
       </Navbar>
