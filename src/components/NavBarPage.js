@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
-import { Grid, Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap'
+import { Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap'
+import { LinkContainer } from 'react-router-bootstrap'
+
+import styles from './NavBarPage.scss'
 
 export default class NavBarPage extends Component {
   render () {
@@ -11,7 +14,9 @@ export default class NavBarPage extends Component {
           </Navbar.Brand>
         </Navbar.Header>
         <Nav>
-          <NavItem eventKey={1} href='#'>Link</NavItem>
+          <LinkContainer to='/'>
+            <NavItem eventKey={1}>Link</NavItem>
+          </LinkContainer>
           <NavItem eventKey={2} href='#'>Link</NavItem>
           <NavDropdown eventKey={3} title='Dropdown' id='basic-nav-dropdown'>
             <MenuItem eventKey={3.1}>Action</MenuItem>
@@ -22,7 +27,9 @@ export default class NavBarPage extends Component {
           </NavDropdown>
         </Nav>
       </Navbar>
-      {this.props.children}
+      <div className={styles.content}>
+        {this.props.children}
+      </div>
     </div>
   }
 }
