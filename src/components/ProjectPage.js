@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 
 import SideBarPage from './SideBarPage'
 import ProjectIssuesPage from './ProjectIssuesPage'
-import { getProjectIssues } from '../actions/IssueActions'
+import { getProjectIssues } from '../actions/ProjectActions'
 
 @connect((state, props) => ({
   issueIds: state.projectIssues[props.params.projectId] || []
