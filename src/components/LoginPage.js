@@ -28,6 +28,12 @@ export default class LoginPage extends Component {
     this.setState({ password: event.target.value })
   }
 
+  handleKeyPress = (event) => {
+    if (event.charCode === 13) {
+      this.handleLogin()
+    }
+  }
+
   render () {
     const { loginState, loginError } = this.props
 
@@ -48,6 +54,7 @@ export default class LoginPage extends Component {
           type='password'
           placeholder='Password'
           onChange={this.handleChangePassword}
+          onKeyPress={this.handleKeyPress}
         />
         <Button
           bsSize='large'
