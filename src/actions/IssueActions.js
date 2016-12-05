@@ -23,10 +23,10 @@ export const getIssue = (issueId) => {
   }
 }
 
-export const updateIssue = (issueId) => {
+export const updateIssue = (issueId, diff) => {
   return (dispatch, getState) => {
     dispatch(createAction(UPDATE_ISSUE_REQUEST)(issueId))
-    const promiseForCall = apiUpdateIssue(getState, issueId)
+    const promiseForCall = apiUpdateIssue(getState, issueId, diff)
     dispatch(createAction(UPDATE_ISSUE_RESPONSE)(promiseForCall))
   }
 }
